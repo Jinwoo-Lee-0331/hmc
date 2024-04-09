@@ -23,6 +23,8 @@ def tunnel_connection():
                               ssh_password=st.secrets["ssh_password"],
                               remote_bind_address=(st.secrets["remote_bind_address"], st.secrets["remote_bind_port"]))
 
+tunnel = tunnel_connection()
+tunnel.start()
 # st.write(tunnel.local_bind_port)
 
 # @st.cache_resource
@@ -71,8 +73,6 @@ if 'plot' not in st.session_state:
 if 'update' not in st.session_state:
     st.session_state['update'] = False
 
-tunnel = tunnel_connection()
-tunnel.start()
 conn = init_connection()
 hrs = pd.read_csv('./data/hrs.csv', header=None)
 # hrs=pd.read_csv('C:\\Users\\researcher\\Desktop\\hrs.csv',header=None)
