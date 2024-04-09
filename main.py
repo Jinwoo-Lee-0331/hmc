@@ -25,7 +25,7 @@ def tunnel_connection():
 
 tunnel = tunnel_connection()
 tunnel.start()
-# st.write(tunnel.local_bind_port)
+st.write(tunnel.local_bind_port)
 
 # @st.cache_resource
 # def init_connection():
