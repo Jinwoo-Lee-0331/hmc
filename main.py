@@ -25,7 +25,7 @@ def tunnel_connection():
 
 tunnel = tunnel_connection()
 tunnel.start()
-st.write(tunnel.local_bind_port)
+# st.write(tunnel.local_bind_port)
 
 # @st.cache_resource
 # def init_connection():
@@ -35,9 +35,9 @@ st.write(tunnel.local_bind_port)
 def init_connection():
     return pymysql.connect(
             host='127.0.0.1', #(local_host)
-            user='ns0331',
-            passwd='wlsdn1469!!',
-            db='hmcportal',
+            user=st.secrets['user'],
+            passwd=st.secrets['passwd'],
+            db=st.secrets['db'],
             charset='utf8',
             port=tunnel.local_bind_port)
 conn = init_connection()
