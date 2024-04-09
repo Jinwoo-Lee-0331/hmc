@@ -25,9 +25,20 @@ def tunnel_connection():
 
 # st.write(tunnel.local_bind_port)
 
+# @st.cache_resource
+# def init_connection():
+#     return st.experimental_connection('hmc_db', type="sql")
+
 @st.cache_resource
 def init_connection():
-    return st.experimental_connection('hmc_db', type="sql")
+    return pymysql.connect(
+            host='127.0.0.1', #(local_host)
+            user='ns0331',
+            passwd='wlsdn1469!!',
+            db='hmcportal',
+            charset='utf8',
+            port=tunnel.local_bind_port)
+conn = init_connection()
 
 @st.cache_data(ttl=600)
 def streamlit_init(hrs, n):
